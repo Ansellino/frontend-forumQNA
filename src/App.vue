@@ -1,47 +1,29 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <nav>
+    <router-link to="/">Home</router-link>
+    <div v-if="auth.isLoggedIn">
+      <router-link to="/my-threads">My Threads</router-link>
+      <button @click="handleLogout">Logout</button>
     </div>
-  </header>
-
+    <div v-else>
+      <router-link to="/login">Login</router-link>
+      <router-link to="/register">Register</router-link>
+    </div>
+  </nav>
   <main>
-    <TheWelcome />
+    <router-view />
   </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup>
+import { useRouter } from "vue-router";
+import { useAuthStore } from "./stores/auth";
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+const auth = useAuthStore();
+const router = useRouter();
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+const handleLogout = () => {
+  auth.logout();
+  router.push("/login");
+};
+</script>
