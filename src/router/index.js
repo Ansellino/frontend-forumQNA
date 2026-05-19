@@ -12,7 +12,11 @@ const routes = [
   {
     path: "/my-threads",
     component: () => import("../views/MyThreads.vue"),
-    meta: { requiresAuth: true }, // Protected route
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/profile/:id",
+    component: () => import("../views/ProfileView.vue"),
   },
 ];
 

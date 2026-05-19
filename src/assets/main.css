@@ -1,35 +1,144 @@
-@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
+@layer base {
+  :root {
+    /* Claude-inspired warm palette */
+    --background:    36 33% 97%;
+    --foreground:    20 14% 10%;
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    --card:          0 0% 100%;
+    --card-foreground: 20 14% 10%;
+
+    --primary:       25 95% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary:     36 20% 94%;
+    --secondary-foreground: 20 14% 20%;
+
+    --muted:         36 20% 94%;
+    --muted-foreground: 20 8% 46%;
+
+    --accent:        36 30% 91%;
+    --accent-foreground: 20 14% 15%;
+
+    --destructive:   0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border:        36 15% 88%;
+    --input:         36 15% 88%;
+    --ring:          25 95% 53%;
+
+    --radius: 0.625rem;
   }
-}
 
-@media (min-width: 1024px) {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
-    display: flex;
-    place-items: center;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+
+  input, textarea {
+    font-family: inherit;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+  }
+}
+
+@layer components {
+  .thread-card {
+    @apply rounded-xl border bg-card p-5 transition-all duration-200;
+    @apply hover:shadow-md hover:border-primary/40 hover:-translate-y-0.5;
+  }
+
+  .form-input {
+    @apply flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-sm;
+    @apply placeholder:text-muted-foreground;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1;
+    @apply transition-all duration-150;
+  }
+
+  .form-textarea {
+    @apply flex w-full rounded-lg border border-input bg-white px-3 py-2 text-sm;
+    @apply placeholder:text-muted-foreground resize-none;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1;
+    @apply transition-all duration-150;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2;
+    @apply bg-primary text-primary-foreground text-sm font-medium;
+    @apply hover:bg-primary/90 active:scale-[0.98];
+    @apply transition-all duration-150 shadow-sm;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2;
+    @apply border border-input bg-white text-foreground text-sm font-medium;
+    @apply hover:bg-accent active:scale-[0.98];
+    @apply transition-all duration-150;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2;
+    @apply text-muted-foreground text-sm font-medium;
+    @apply hover:bg-accent hover:text-foreground active:scale-[0.98];
+    @apply transition-all duration-150;
+  }
+
+  .badge-q {
+    @apply shrink-0 w-9 h-9 rounded-lg flex items-center justify-center;
+    @apply bg-primary/10 border border-primary/25 text-xs font-bold text-primary;
+  }
+
+  .avatar-sm {
+    @apply w-6 h-6 rounded-full flex items-center justify-center;
+    @apply bg-primary/10 text-[11px] font-semibold text-primary;
+  }
+
+  .page-container {
+    @apply max-w-4xl mx-auto px-4 py-8;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-foreground;
+  }
+
+  .section-subtitle {
+    @apply text-sm text-muted-foreground mt-0.5;
   }
 }

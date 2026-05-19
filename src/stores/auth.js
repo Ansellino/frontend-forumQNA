@@ -9,6 +9,14 @@ export const useAuthStore = defineStore("auth", {
 
   getters: {
     isLoggedIn: (state) => !!state.token,
+    username: (state) => {
+      if (!state.token) return null
+      try { return JSON.parse(atob(state.token.split('.')[1])).username } catch { return null }
+    },
+    userId: (state) => {
+      if (!state.token) return null
+      try { return JSON.parse(atob(state.token.split('.')[1])).sub } catch { return null }
+    },
   },
 
   actions: {
@@ -18,7 +26,7 @@ export const useAuthStore = defineStore("auth", {
 
     async login(email, password) {
       const res = await api.post("/auth/login", { email, password });
-      this.token = res.data.access_token;
+      this.token = res.data?.data?.access_token || res.data?.access_token;
       localStorage.setItem("token", this.token);
     },
 
