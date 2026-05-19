@@ -1,58 +1,75 @@
-# Q&A Forum Web (Vue 3)
+# Q&A Forum Frontend
 
-Frontend web app for the Q&A Forum. Provides authentication, thread browsing,
-thread detail with replies, and user profile pages.
+Vue 3 web application for Q&A forum discussion platform. Users can browse threads, create discussions, reply to threads, and manage their profiles with secure authentication.
 
-## Features
+## ✨ Features
 
-- Auth flow (login/register)
-- Threads list and detail view
-- Create replies and view discussion
-- User profile and "My Threads" page
-- Route guards for protected pages
+- User authentication (login/register with JWT)
+- Browse and search threads
+- View thread details with replies
+- Create and manage threads
+- User profiles with personal thread management
+- Protected routes and role-based access
 
-## Tech stack
+## 🛠 Tech Stack
 
-- Vue 3 + Vite
-- Vue Router
-- Pinia state management
-- Axios API client
-- Tailwind CSS
+| Layer | Technology |
+|-------|-----------|
+| Framework | Vue 3 + Vite |
+| Routing | Vue Router |
+| State | Pinia |
+| HTTP | Axios |
+| Styling | Tailwind CSS |
 
-## Requirements
+## 📋 Requirements
 
-- Node.js 20+
+- Node.js 20 or higher
+- npm 10+ or yarn/pnpm
 
-## Environment variables
+## ⚡ Quick Start
 
-Create a `.env` file in this folder:
-
-```bash
-VITE_API_URL=http://localhost:3000/api
-```
-
-## Setup
-
+### 1. Install Dependencies
 ```bash
 npm install
 ```
 
-## Run the app
+### 2. Configure Environment
+Create `.env` file in the project root:
+```env
+VITE_API_URL=http://localhost:3000/api
+```
 
+### 3. Run Development Server
 ```bash
 npm run dev
 ```
 
-## Build and preview
+The app will be available at `http://localhost:5173`
+
+## 📦 Build & Deploy
 
 ```bash
+# Build for production
 npm run build
+
+# Preview production build locally
 npm run preview
 ```
 
-## Project structure
+## 📁 Project Structure
 
-- `src/api` Axios client and interceptors
-- `src/stores` Auth store (Pinia)
-- `src/views` Page-level views
-- `src/components` Reusable UI components
+```
+src/
+├── api/           Axios client configuration and API interceptors
+├── stores/        Pinia store (auth, user state)
+├── views/         Full-page components (Home, Thread, Profile, etc)
+├── components/    Reusable UI components
+├── router/        Route definitions and guards
+├── assets/        Static files and images
+└── main.ts        Application entry point
+```
+
+## 🔗 Related Projects
+
+- Backend API: `../Backend` - Express.js server
+- See main repository README for full setup instructions
