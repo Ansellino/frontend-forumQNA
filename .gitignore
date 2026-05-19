@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
+Thumbs.db
 dist
 dist-ssr
 coverage
@@ -39,3 +40,17 @@ __screenshots__/
 *.timestamp-*-*.mjs
 
 .env
+.env.*
+
+# Secrets and local data
+*.pem
+*.key
+*.crt
+*.pfx
+*.p12
+*.sqlite
+*.sqlite3
+*.db
+*.secrets.json
+*service-account*.json
+*adminsdk*.json

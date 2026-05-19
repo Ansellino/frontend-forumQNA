@@ -1,38 +1,58 @@
-# frontend
+# Q&A Forum Web (Vue 3)
 
-This template should help get you started developing with Vue 3 in Vite.
+Frontend web app for the Q&A Forum. Provides authentication, thread browsing,
+thread detail with replies, and user profile pages.
 
-## Recommended IDE Setup
+## Features
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Auth flow (login/register)
+- Threads list and detail view
+- Create replies and view discussion
+- User profile and "My Threads" page
+- Route guards for protected pages
 
-## Recommended Browser Setup
+## Tech stack
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Vue 3 + Vite
+- Vue Router
+- Pinia state management
+- Axios API client
+- Tailwind CSS
 
-## Customize configuration
+## Requirements
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- Node.js 20+
 
-## Project Setup
+## Environment variables
 
-```sh
+Create a `.env` file in this folder:
+
+```bash
+VITE_API_URL=http://localhost:3000/api
+```
+
+## Setup
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Run the app
 
-```sh
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Build and preview
 
-```sh
+```bash
 npm run build
+npm run preview
 ```
+
+## Project structure
+
+- `src/api` Axios client and interceptors
+- `src/stores` Auth store (Pinia)
+- `src/views` Page-level views
+- `src/components` Reusable UI components
